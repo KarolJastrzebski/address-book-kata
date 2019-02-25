@@ -26,4 +26,18 @@ public class AddressBookTest {
             .hasFieldOrPropertyWithValue("gender", "Male")
             .hasFieldOrPropertyWithValue("dob", "16/03/77");
     }
+
+    @Test
+    public void reads_multiple_contacts() {
+        String input = "Bill McKnight, Male, 16/03/77\n"
+            + "Gemma Lane, Female, 20/11/91";
+
+        AddressBook addressBook = new AddressBook(new InputStreamReader(new ByteArrayInputStream(input.getBytes())));
+
+        assertThat(addressBook.getContacts()).hasSize(2)
+            .last()
+            .hasFieldOrPropertyWithValue("name", "Gemma Lane")
+            .hasFieldOrPropertyWithValue("gender", "Female")
+            .hasFieldOrPropertyWithValue("dob", "20/11/91");
+    }
 }
