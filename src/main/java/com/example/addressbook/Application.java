@@ -14,5 +14,16 @@ public class Application {
 
         Contact oldest = addressBook.findOldest();
         System.out.println("Oldest person is " + oldest.getName());
+
+        Contact bill = addressBook.findByFirstName("Bill").iterator().next();
+        Contact paul = addressBook.findByFirstName("Paul").iterator().next();
+        System.out.println(
+            String.format(
+                "%s is older than %s by %d days",
+                bill.getName(),
+                paul.getName(),
+                bill.daysDifferenceTo(paul)
+            )
+        );
     }
 }

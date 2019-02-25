@@ -2,6 +2,7 @@ package com.example.addressbook;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class Contact {
@@ -38,5 +39,13 @@ public class Contact {
 
     public String getName() {
         return name;
+    }
+
+    public long daysDifferenceTo(Contact other) {
+        try {
+            return ChronoUnit.DAYS.between(getDateOfBirth().toInstant(), other.getDateOfBirth().toInstant());
+        } catch (ParseException e) {
+            return 0;
+        }
     }
 }
