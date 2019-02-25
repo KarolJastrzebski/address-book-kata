@@ -32,4 +32,8 @@ public class AddressBook {
     public Contact findOldest() {
         return contacts.stream().min(Contact::compareDateOfBirth).get();
     }
+
+    public List<Contact> findByFirstName(String firstName) {
+        return contacts.stream().filter(contact -> contact.hasFirstName(firstName)).collect(Collectors.toList());
+    }
 }

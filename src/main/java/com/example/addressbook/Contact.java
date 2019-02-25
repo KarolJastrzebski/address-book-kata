@@ -31,4 +31,8 @@ public class Contact {
             return 0;
         }
     }
+
+    public boolean hasFirstName(String firstName) {
+        return name.startsWith(firstName + " ");
+    }
 }
