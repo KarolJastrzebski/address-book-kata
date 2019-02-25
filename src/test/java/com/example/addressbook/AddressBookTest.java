@@ -54,4 +54,18 @@ public class AddressBookTest {
             .hasFieldOrPropertyWithValue("gender", "Female")
             .hasFieldOrPropertyWithValue("dob", "20/11/91");
     }
+
+    @Test
+    public void finds_oldest_contact() {
+        String input = "Bill McKnight, Male, 16/03/77\n"
+            + "Wes Jackson, Male, 14/08/74\n"
+            + "Gemma Lane, Female, 20/11/91";
+
+        AddressBook addressBook = new AddressBook(new InputStreamReader(new ByteArrayInputStream(input.getBytes())));
+
+        assertThat(addressBook.findOldest())
+            .hasFieldOrPropertyWithValue("name", "Wes Jackson")
+            .hasFieldOrPropertyWithValue("gender", "Male")
+            .hasFieldOrPropertyWithValue("dob", "14/08/74");
+    }
 }

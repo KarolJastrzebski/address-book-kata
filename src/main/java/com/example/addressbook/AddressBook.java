@@ -28,4 +28,8 @@ public class AddressBook {
     public List<Contact> findByGender(String selectedGender) {
         return contacts.stream().filter(contact -> contact.isGenderOf(selectedGender)).collect(Collectors.toList());
     }
+
+    public Contact findOldest() {
+        return contacts.stream().min(Contact::compareDateOfBirth).get();
+    }
 }
