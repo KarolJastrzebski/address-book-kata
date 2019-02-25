@@ -35,4 +35,8 @@ public class Contact {
     public boolean hasFirstName(String firstName) {
         return name.startsWith(firstName + " ");
     }
+
+    public String getName() {
+        return name;
+    }
 }
