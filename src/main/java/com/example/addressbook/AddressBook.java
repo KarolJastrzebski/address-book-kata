@@ -24,4 +24,8 @@ public class AddressBook {
     public List<Contact> getContacts() {
         return contacts;
     }
+
+    public List<Contact> findByGender(String selectedGender) {
+        return contacts.stream().filter(contact -> contact.isGenderOf(selectedGender)).collect(Collectors.toList());
+    }
 }

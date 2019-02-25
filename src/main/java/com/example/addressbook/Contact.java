@@ -10,4 +10,8 @@ public class Contact {
         this.gender = gender;
         this.dob = dob;
     }
+
+    public boolean isGenderOf(String selectedGender) {
+        return gender.contentEquals(selectedGender);
+    }
 }

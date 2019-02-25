@@ -40,4 +40,18 @@ public class AddressBookTest {
             .hasFieldOrPropertyWithValue("gender", "Female")
             .hasFieldOrPropertyWithValue("dob", "20/11/91");
     }
+
+    @Test
+    public void finds_contacts_by_gender() {
+        String input = "Bill McKnight, Male, 16/03/77\n"
+            + "Gemma Lane, Female, 20/11/91";
+
+        AddressBook addressBook = new AddressBook(new InputStreamReader(new ByteArrayInputStream(input.getBytes())));
+
+        assertThat(addressBook.findByGender("Female")).hasSize(1)
+            .first()
+            .hasFieldOrPropertyWithValue("name", "Gemma Lane")
+            .hasFieldOrPropertyWithValue("gender", "Female")
+            .hasFieldOrPropertyWithValue("dob", "20/11/91");
+    }
 }
